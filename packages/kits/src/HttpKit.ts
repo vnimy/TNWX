@@ -25,4 +25,5 @@ export interface HttpDelegate {
   httpPostWithCert<T = any>(url: string, data: string, certFileContent: Buffer, passphrase: string): Promise<T>
   upload<T = any>(url: string, filePath: string, params?: string): Promise<T>
   uploadToResponse<T = any>(url: string, filePath: string, data: string, options?: any): Promise<T>
+  httpPutToResponse(url: string, data: string, options?: any): Promise<any>
 }
