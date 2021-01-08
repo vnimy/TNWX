@@ -234,9 +234,9 @@ export class MiniProgramApi {
 
   /**
    * 获取小程序二维码
-   * 适用于需要的码数量较少的业务场景。通过该接口生成的小程序码，永久有效，有数量限制
+   * 适用于需要的码数量极多的业务场景。通过该接口生成的小程序码，永久有效，数量暂无限制。
    * @param scene
-   * @param path
+   * @param page
    * @param width
    * @param autoColor
    * @param lineColor
@@ -244,7 +244,7 @@ export class MiniProgramApi {
    */
   public static async getUnlimited(
     scene: string,
-    path: string,
+    page: string,
     width: number = 430,
     autoColor: boolean = false,
     lineColor: object = { r: 0, g: 0, b: 0 },
@@ -255,8 +255,8 @@ export class MiniProgramApi {
     return HttpKit.getHttpDelegate.httpPost(
       url,
       JSON.stringify({
-        scene: encodeURIComponent(scene),
-        path: path,
+        scene: scene,
+        page: page,
         width: width,
         auto_color: autoColor,
         line_color: lineColor,
@@ -383,7 +383,7 @@ export class MiniProgramApi {
     )
   }
 
-  private static userLogSearchUrl: string = 'https://api.weixin.qq.com/wxaapi/userlog/userlog_search?access_token=%s&date=s%&begintime=s%&endtime=s%&start=s%&limit=s%'
+  private static userLogSearchUrl: string = 'https://api.weixin.qq.com/wxaapi/userlog/userlog_search?access_token=%s&date=%s&begintime=%s&endtime=%s&start=%s&limit=%s'
 
   /**
    * 实时日志查询
